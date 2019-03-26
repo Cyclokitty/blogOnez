@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './Header';
+import Blog from './Blog';
+import Footer from './Footer';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.getYear = this.getYear.bind(this);
+  }
+
+  getYear() {
+    let dt = new Date();
+    return dt.getFullYear();
+  }
+
   render() {
+    let year = this.getYear();
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Header title={'First Post'} />
+        <Blog />
+        <Footer date={year} />
       </div>
     );
   }
